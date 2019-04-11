@@ -1,0 +1,80 @@
+# BUILD
+
+## build binary
+bazel build //:binary
+bazel build //cyber:cyber
+bazel build //cyber:mainboard
+bazel build //cyber/examples:talker -c dbg --copt=-g
+bazel build //cyber/examples:listener -c dbg --define gcc=5.4
+bazel build //cyber/examples:paramserver
+bazel build //cyber/examples:service
+bazel build //cyber/task:task_test
+bazel build //cyber/croutine:croutine_test
+
+bazel build //modules/common:common
+bazel build //modules/common/math:angle_test
+bazel build //modules/common/math:mpc_test
+bazel build //modules/common/math:math_utils_test
+bazel build //modules/common/math:linear_interpolation_test
+bazel build //modules/common/math:search_test
+bazel build //modules/common/math:integral_test
+bazel build //modules/common/math:euler_angles_zxy_test
+bazel build //modules/common/math:box2d_test
+bazel build //modules/common/math:polygon2d_test
+bazel build //modules/common/math:kalman_filter_test
+bazel build //modules/common/math:cartesian_frenet_conversion_test
+
+
+
+bazel build //modules/tools/visualizer:cyber_visualizer
+
+# Dependences
+
+## glog
+# git clone git@github.com:google/glog.git
+$ mkdir build
+$ cd build
+$ cmake -DBUILD_SHARED_LIBS=ON ../
+$ make
+$ sudo make install
+
+## gflags
+# git clone git@github.com:gflags/gflags.git
+$ mkdir build
+$ cd build
+$ cmake -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON ../
+$ make
+$ sudo make install
+
+## Fast-CDR
+$ git clone git@github.com:eProsima/Fast-CDR.git
+$ cd Fast-CDR
+$ git checkout v1.0.7
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+
+## Fast-RTPS
+$ git clone git@github.com:eProsima/Fast-RTPS.git
+$ cd Fast-RTPS
+$ git checkout v1.5.0
+$ mkdir build
+$ cd build
+$ cmake -DTHIRDPARTY=ON ..
+$ make
+$ sudo make install
+
+## protobuf
+wget https://gitee.com/kesalin/cyberdeps/raw/master/protobuf-3.3.0.tar.gz
+
+## osqp v0.4.1
+$ git clone --recursive https://github.com/oxfordcontrol/osqp
+$ cd osqp
+$ git checkout v0.4.1
+$ mkdir build
+$ cd build
+$ cmake -G "Unix Makefiles" ..
+$ cmake --build .
+$ sudo cmake --build . --target install
