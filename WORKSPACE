@@ -1,12 +1,14 @@
 workspace(name = "gs_cyber")
 
 # googletest (GTest and GMock)
-new_http_archive(
+git_repository(
+  name = "com_github_google_gtest",
+  remote = "https://github.com/google/googletest.git",
+  tag = "release-1.8.1",
+)
+bind(
     name = "gtest",
-    build_file = "third_party/gtest.BUILD",
-    sha256 = "58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8",
-    strip_prefix = "googletest-release-1.8.0",
-    url = "https://github.com/google/googletest/archive/release-1.8.0.tar.gz",
+    actual = "@com_github_google_gtest//:gtest",
 )
 
 # cpplint from google style guide
