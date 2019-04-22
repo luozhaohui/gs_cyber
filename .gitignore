@@ -5,6 +5,7 @@ bazel-bin
 bazel-genfiles
 bazel-out
 bazel-testlogs
+bazel-gs_cyber
 /Debug/
 *.pyc
 *genrule.log

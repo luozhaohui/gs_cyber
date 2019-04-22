@@ -1,14 +1,11 @@
 workspace(name = "gs_cyber")
 
 # googletest (GTest and GMock)
-git_repository(
-  name = "com_github_google_gtest",
+new_git_repository(
+  name = "gtest",
   remote = "https://github.com/google/googletest.git",
-  tag = "release-1.8.1",
-)
-bind(
-    name = "gtest",
-    actual = "@com_github_google_gtest//:gtest",
+  commit = "2fe3bd994b3189899d93f1d5a881e725e046fdc2",
+  build_file = "third_party/gtest.BUILD",
 )
 
 # cpplint from google style guide
@@ -104,3 +101,19 @@ new_http_archive(
 #    strip_prefix = "curlpp-0.8.1",
 #    url = "file:///home/kesalin/Documents/tmp/curlpp-0.8.1.tar.gz",
 #)
+
+# qt
+new_local_repository(
+    name = "qt",
+    build_file = "third_party/qt.BUILD",
+    path = "/usr/local/Qt5.5.1/5.5/gcc_64",
+#    path = "/usr/include/qt5",
+)
+
+# YAML-CPP
+new_http_archive(
+    name = "yaml_cpp",
+    build_file = "third_party/yaml_cpp.BUILD",
+    strip_prefix = "yaml-cpp-yaml-cpp-0.5.3",
+    url = "file:///home/kesalin/Documents/tmp/yaml-cpp-0.5.3.zip",
+)

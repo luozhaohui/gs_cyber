@@ -9,15 +9,15 @@ cc_binary(
         ".",
     ],
     linkopts = [
-        "-lfastrtps",
         "-lconsole_bridge",
-        "-lprotobuf",
-        "-lglog",
         "-lpthread",
         "-lGL",
     ],
     deps = [
         ":visualizer_lib",
+        "@fastrtps",
+        "@glog",
+        "@com_google_protobuf//:protobuf",
     ],
 )
 

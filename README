@@ -11,6 +11,18 @@ bazel build //cyber/examples:service
 bazel build //cyber/task:task_test
 bazel build //cyber/croutine:croutine_test
 
+bazel build //cyber/tools/cyber_monitor:cyber_monitor
+bazel build //cyber/tools/cyber_recorder:cyber_recorder
+
+bazel build //third_party/tf2_eigen:tf2_eigen
+bazel build //third_party/tf2_eigen:tf2_eigen-test
+
+bazel build //modules/tools/visualizer:cyber_visualizer
+
+bazel build //modules/transform:static_transform_component_test
+
+libstatic_transform_component
+
 bazel build //modules/common:common
 bazel build //modules/common/math:angle_test
 bazel build //modules/common/math:mpc_test
@@ -25,8 +37,6 @@ bazel build //modules/common/math:kalman_filter_test
 bazel build //modules/common/math:cartesian_frenet_conversion_test
 
 
-
-bazel build //modules/tools/visualizer:cyber_visualizer
 
 # Dependences
 
@@ -78,3 +88,6 @@ $ cd build
 $ cmake -G "Unix Makefiles" ..
 $ cmake --build .
 $ sudo cmake --build . --target install
+
+## cyber_monitor Dependences
+sudo apt-get install libncurses5-dev libncursesw5-dev

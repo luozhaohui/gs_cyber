@@ -68,6 +68,37 @@ struct TransformStamped {
   Transform transform;
 }; 
 
+struct Point {
+  double x;
+  double y;
+  double z;
+};
+
+struct PointStamped {
+  Header header;
+  Point point;
+};
+
+struct QuaternionStamped {
+  Header header;
+  Quaternion quaternion;
+};
+
+struct Pose {
+  Point position;
+  Quaternion orientation;
+};
+
+struct PoseStamped {
+  Header header;
+  Pose pose;
+};
+
+struct Twist {
+  Vector3  linear;
+  Vector3  angular;
+};
+
 }
 
 #endif
